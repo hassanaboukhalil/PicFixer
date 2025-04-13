@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useToast = () => {
-  const [toast, setToast] = useState({
-    message: "",
-    success: true,
-    visible: false,
-  });
+    const [toast, setToast] = useState({
+        message: '',
+        success: true,
+        visible: false,
+    });
 
-  return [toast, setToast];
+    return [toast, setToast];
 };
 export default useToast;

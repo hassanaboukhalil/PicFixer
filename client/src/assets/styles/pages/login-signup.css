@@ -1,11 +1,10 @@
-.login_signup_section{
+.login_signup_section {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
 }
-
 
 form {
     display: flex;
@@ -17,7 +16,7 @@ form {
     width: 23rem;
 }
 
-input{
+input {
     width: 100%;
     padding: 0.5em 0.5em;
 }
