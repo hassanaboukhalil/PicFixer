@@ -1,16 +1,16 @@
-import Header from "../components/layout/Header";
-import Section from "../components/layout/Section";
+import Header from '../components/layout/Header';
+import Section from '../components/layout/Section';
 
 const Home = () => {
-  return (
-    <>
-      <Header />
-      <Section>
+    return (
         <>
-          <p>home</p>
+            <Header />
+            <Section>
+                <>
+                    <p>home</p>
+                </>
+            </Section>
         </>
-      </Section>
-    </>
-  );
+    );
 };
 export default Home;
