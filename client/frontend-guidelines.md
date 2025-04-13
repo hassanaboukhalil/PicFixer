@@ -39,23 +39,23 @@ Example:
 
 ```html
 <div class="card">
-  <h2 class="card__title">Image Editor</h2>
-  <button class="card__button card__button--active">Start</button>
+    <h2 class="card__title">Image Editor</h2>
+    <button class="card__button card__button--active">Start</button>
 </div>
 ```
 
 ```css
 .card {
-  background: #fff;
+    background: #fff;
 }
 .card__title {
-  font-size: 18px;
+    font-size: 18px;
 }
 .card__button {
-  padding: 10px;
+    padding: 10px;
 }
 .card__button--active {
-  background-color: #007bff;
+    background-color: #007bff;
 }
 ```
 
