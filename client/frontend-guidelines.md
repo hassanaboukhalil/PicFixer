@@ -4,7 +4,7 @@
 
 - Use **camelCase** for general files (e.g., `userProfile.jsx`, `imageEditor.js`)
 - Use **PascalCase** for React components (e.g., `ImageUploader.jsx`, `LoginForm.jsx`)
-- Organize components into folders by feature (e.g., `/components/features/upload/UploadForm.jsx`)
+- Organize components into folders by feature (e.g., `/components/pages-components/upload/UploadForm.jsx`)
 
 ---
 
@@ -24,7 +24,7 @@
 
 ## 🗂️ State Management
 
-- Use **Redux Toolkit** or **Context API** for global state
+- Use **Redux Toolkit** for global state
 - Keep global state organized in a `/store` folder
 - Avoid **prop drilling** by lifting state or using context
 
