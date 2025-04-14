@@ -4,12 +4,12 @@ export const sourceOptions = [
     {
         label: 'Pictures Library',
         icon: ImageIcon,
-        onClick: () => {
-            window.electronAPI
-                .openPicturesLibrary()
-                .then((result) => console.log('Selected image:', result))
-                .catch((err) => console.error('Error selecting image:', err));
-        },
+        // onClick: () => {
+        //     window.electronAPI
+        //         .openPicturesLibrary()
+        //         .then((result) => console.log('Selected image:', result))
+        //         .catch((err) => console.error('Error selecting image:', err));
+        // },
     },
     {
         label: 'Camera',
