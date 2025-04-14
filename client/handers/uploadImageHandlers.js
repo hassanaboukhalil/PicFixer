@@ -2,6 +2,7 @@
 const { ipcMain, dialog, app } = require('electron');
 const path = require('path');
 const NodeWebcam = require('node-webcam');
+const fs = require('fs');
 
 function uploadImageHandlers() {
     // Open Pictures Library
@@ -13,7 +14,15 @@ function uploadImageHandlers() {
         });
 
         if (!result.canceled && result.filePaths.length > 0) {
-            return result.filePaths[0];
+            const filePath = result.filePaths[0];
+
+            const fileBuffer = fs.readFileSync(filePath);
+            const base64 = fileBuffer.toString('base64');
+
+            const ext = path.extname(filePath).toLowerCase().replace('.', '');
+            const mimeType = `image/${ext === 'jpg' ? 'jpeg' : ext}`;
+
+            return `data:${mimeType};base64,${base64}`;
         } else {
             throw new Error('No image selected');
         }
