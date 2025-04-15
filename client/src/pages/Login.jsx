@@ -21,35 +21,34 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        navigate('/select-source');
-        // try {
-        //     const response = await axiosBaseUrl.post('/login', {
-        //         email: email,
-        //         password: password,
-        //     });
+        try {
+            const response = await axiosBaseUrl.post('/login', {
+                email: email,
+                password: password,
+            });
 
-        //     if (response.data.success == true) {
-        //         localStorage.setItem('id', response.data.data.id);
-        //         localStorage.setItem('full_name', response.data.data.full_name);
-        //         localStorage.setItem('token', response.data.data.token);
+            if (response.data.success == true) {
+                localStorage.setItem('id', response.data.user.id);
+                localStorage.setItem('name', response.data.user.name);
+                // localStorage.setItem('token', response.data.data.token);
 
-        //         navigate('/dashboard');
-        //     } else {
-        //         setToast({
-        //             message: 'Login failed',
-        //             success: false,
-        //             visible: true,
-        //         });
-        //         console.log('Login failed:', response.data.message);
-        //     }
-        // } catch (error) {
-        //     setToast({
-        //         message: 'Error during login',
-        //         success: false,
-        //         visible: true,
-        //     });
-        //     console.error('Error during login:', error);
-        // }
+                navigate('/select-source');
+            } else {
+                setToast({
+                    message: 'Login failed',
+                    success: false,
+                    visible: true,
+                });
+                console.log('Login failed:', response.data.message);
+            }
+        } catch (error) {
+            setToast({
+                message: 'Error during login',
+                success: false,
+                visible: true,
+            });
+            console.error('Error during login:', error);
+        }
     };
 
     return (

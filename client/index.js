@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const { uploadImageHandlers } = require('./handers/uploadImageHandlers');
+const { uploadImageHandlers } = require('./handlers/uploadImageHandlers');
 
 function createWindow() {
     const window = new BrowserWindow({
