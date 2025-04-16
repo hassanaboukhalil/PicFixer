@@ -9,16 +9,10 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    use WithFaker;
-    /**
-     * A basic feature test example.
-     */
+    use RefreshDatabase, WithFaker;
+
     public function testLogin(): void
     {
-        // $response = $this->get('/');
-
-        // $response->assertStatus(200);
-
         $email = $this->faker->unique()->safeEmail();
 
         $user = User::factory()->create([
@@ -30,6 +24,7 @@ class LoginTest extends TestCase
             'email' => $email,
             'password' => 'password',
         ]);
+
         $response->assertStatus(200)
             ->assertJson([
                 "success" => true,
