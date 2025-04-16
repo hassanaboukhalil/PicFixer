@@ -25,6 +25,10 @@ jobs:
         working-directory: ./server
         run: composer install --prefer-dist
 
+      - name: Copy .env example
+        working-directory: ./server
+        run: cp .env.example .env
+
       - name: Generate Application Key
         working-directory: ./server
         run: php artisan key:generate
