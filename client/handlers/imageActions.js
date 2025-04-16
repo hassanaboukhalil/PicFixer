@@ -4,7 +4,7 @@ const path = require('path');
 const NodeWebcam = require('node-webcam');
 const fs = require('fs');
 
-function uploadImageHandlers() {
+function imageActions() {
     // Open Pictures Library
     ipcMain.handle('open-pictures-library', async () => {
         const result = await dialog.showOpenDialog({
@@ -43,8 +43,11 @@ function uploadImageHandlers() {
 
             const outputPath = path.join(
                 app.getPath('pictures'),
+                'picfixer',
                 `picfixer_capture_${Date.now()}.jpg`
             );
+
+            // const filePath = path.join(app.getPath('pictures'), 'picfixer');
 
             webcam.capture(outputPath, function (err, data) {
                 if (!err) {
@@ -57,6 +60,22 @@ function uploadImageHandlers() {
             });
         });
     });
+
+    ipcMain.handle('save-image', async (event, base64) => {
+        const matches = base64.match(/^data:.+\/(.+);base64,(.*)$/);
+        if (!matches || matches.length !== 3) throw new Error('Invalid base64');
+
+        const ext = matches[1];
+        const buffer = Buffer.from(matches[2], 'base64');
+
+        const savePath = path.join(app.getPath('pictures'), 'PicFixer');
+        if (!fs.existsSync(savePath)) fs.mkdirSync(savePath);
+
+        const filePath = path.join(savePath, `edited_${Date.now()}.${ext}`);
+        fs.writeFileSync(filePath, buffer);
+
+        return filePath;
+    });
 }
 
-module.exports = { uploadImageHandlers };
+module.exports = { imageActions };

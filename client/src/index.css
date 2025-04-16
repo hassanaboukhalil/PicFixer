@@ -51,10 +51,10 @@ nav {
 /************** colors */
 /* bg colors */
 .bg-primary {
-    background-color: #0077b6;
+    background-color: #001E36;
 }
 .bg-secondary {
-    background-color: #fcb97d;
+    background-color: #30A5FB;
 }
 .bg-tertiary {
     background-color: #e5f3ff;
@@ -83,7 +83,7 @@ nav {
     color: #0077b6;
 }
 .text-secondary {
-    color: #fcb97d;
+    color: #30A5FB;
 }
 .text-tertiary {
     color: #e5f3ff;
