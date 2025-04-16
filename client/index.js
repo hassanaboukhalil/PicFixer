@@ -1,11 +1,12 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const { uploadImageHandlers } = require('./handlers/uploadImageHandlers');
+const { imageActions } = require('./handlers/imageActions');
 
 function createWindow() {
     const window = new BrowserWindow({
         minWidth: 900,
         minHeight: 600,
+        title: 'PicFixer',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'), // preload script
             contextIsolation: true,
@@ -21,7 +22,7 @@ function createWindow() {
 // App lifecycle
 app.whenReady().then(() => {
     createWindow();
-    uploadImageHandlers(); // Register IPC handlers for camera & library
+    imageActions(); // Register IPC handlers for camera & library & others
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
