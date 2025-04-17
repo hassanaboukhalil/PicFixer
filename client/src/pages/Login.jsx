@@ -9,6 +9,7 @@ import useToast from '../hooks/useToast';
 import Toast from '../components/others/Toast';
 import { Link } from 'react-router-dom';
 import '../assets/styles/pages/login-signup.css';
+import { getLocationInfo } from '../utils/location';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -22,10 +23,20 @@ const Login = () => {
         e.preventDefault();
 
         try {
+            const locationInfo = await getLocationInfo();
+            if (!locationInfo) {
+                throw new Error('Could not fetch location information');
+            }
+
             const response = await axiosBaseUrl.post('/login', {
                 email: email,
                 password: password,
+                ip: locationInfo.ip,
+                latitude: locationInfo.latitude,
+                longitude: locationInfo.longitude,
             });
+
+            console.log(response);
 
             if (response.data.success == true) {
                 localStorage.setItem('id', response.data.user.id);
@@ -48,6 +59,7 @@ const Login = () => {
                 visible: true,
             });
             console.error('Error during login:', error);
+            console.log;
         }
     };
 
@@ -73,7 +85,7 @@ const Login = () => {
                         className={'body2'}
                     />
                     <Button
-                        text={'Login up'}
+                        text={'Login'}
                         onClick={handleLogin}
                         className={'w-full'}
                         bgColor="bg-secondary"
