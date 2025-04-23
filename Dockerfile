@@ -1,5 +1,9 @@
 FROM bitnami/laravel
 
+# Add MySQL client
+USER root
+RUN install_packages mysql-client
+
 WORKDIR /app
 
 # Copy full Laravel project into /app/server
