@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserLoggedIn;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,11 +14,14 @@ class AuthController extends Controller
         try {
             $email = $request->email;
             $password = $request->password;
+            $ip = $request->ip;
+            $lat = $request->latitude;
+            $lon = $request->longitude;
 
             if (!$email || !$password) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email and password are requireddddddd'
+                    'message' => 'Email and password are required'
                 ], 500);
             }
 
@@ -31,6 +35,7 @@ class AuthController extends Controller
                 ], 401);
             }
 
+            UserLoggedIn::dispatch($user, $ip, $lat, $lon);
 
             return response()->json([
                 'success' => true,
@@ -45,8 +50,8 @@ class AuthController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => $e->getMessage()
-            ], 401);
+                'message' => $e->getMessage(),
+            ], 500);
         }
     }
 }
