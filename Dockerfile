@@ -2,7 +2,9 @@ FROM bitnami/laravel
 
 # Add MySQL client
 USER root
-RUN install_packages mysql-client
+
+# Install MySQL client (needed for mysqladmin)
+RUN apt-get update && apt-get install -y default-mysql-client && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
