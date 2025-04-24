@@ -8,7 +8,7 @@ import {
     createCropBox,
     performCrop,
     addWatermarkToImage,
-    // applyBlackAndWhite,
+    applyBlackAndWhite,
 } from '../../../lib/fabric';
 
 const ImageCanvas = () => {
@@ -22,7 +22,7 @@ const ImageCanvas = () => {
     const rotation = useSelector((state) => state.image.rotation);
     const isCropping = useSelector((state) => state.image.isCropping);
     const watermarkText = useSelector((state) => state.image.watermarkText);
-    // const isBW = useSelector((state) => state.image.isBW);
+    const isBW = useSelector((state) => state.image.isBW);
 
     // Only run once to initialize canvas
     useEffect(() => {
@@ -94,21 +94,21 @@ const ImageCanvas = () => {
     }, [watermarkText]);
 
     // transform image to black and white
-    // useEffect(() => {
-    //     const canvas = fabricRef.current;
-    //     if (!canvas) return;
+    useEffect(() => {
+        const canvas = fabricRef.current;
+        if (!canvas) return;
 
-    //     if (isBW) {
-    //         applyBlackAndWhite(canvas);
-    //     } else {
-    //         const image = canvas.getObjects('image')[0];
-    //         if (image) {
-    //             image.filters = [];
-    //             image.applyFilters();
-    //             canvas.renderAll();
-    //         }
-    //     }
-    // }, [isBW]);
+        if (isBW) {
+            applyBlackAndWhite(canvas);
+        } else {
+            const image = canvas.getObjects('image')[0];
+            if (image) {
+                image.filters = [];
+                image.applyFilters();
+                canvas.renderAll();
+            }
+        }
+    }, [isBW]);
     return (
         <div className="canvas-wrapper">
             <canvas ref={canvasRef} className="canvas" />
