@@ -1,14 +1,14 @@
 import React from 'react';
 import '../App.css';
 import { useState } from 'react';
-import Input from '../components/others/Input';
-import Button from '../components/others/Button';
+import Input from '../components/common/Input';
+import Button from '../components/common/Button';
 import { useNavigate } from 'react-router-dom';
 import axiosBaseUrl from '../utils/axios';
 import useToast from '../hooks/useToast';
-import Toast from '../components/others/Toast';
+import Toast from '../components/common/Toast';
 import { Link } from 'react-router-dom';
-import '../assets/styles/pages/login-signup.css';
+import '../styles/pages/login-signup.css';
 import { getLocationInfo } from '../utils/location';
 
 const Login = () => {
