@@ -1,11 +1,14 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen } = require('electron');
 const path = require('path');
 const { imageActions } = require('./handlers/imageActions');
 
 function createWindow() {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
     const window = new BrowserWindow({
-        minWidth: 900,
-        minHeight: 600,
+        // minWidth: 900,
+        // minHeight: 600,
+        width, // full screen width
+        height, // full screen height
         title: 'PicFixer',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'), // preload script
