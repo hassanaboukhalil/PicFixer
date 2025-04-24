@@ -39,7 +39,7 @@ export const loadImageToCanvas = (canvas, base64, rotation = 0) => {
 };
 
 // Resizes canvas to fit current window (minus sidebar width).
-export const resizeCanvasToWindow = (canvas, sidebarWidth = 220) => {
+export const resizeCanvasToWindow = (canvas, sidebarWidth = 82) => {
     if (!canvas) return;
 
     canvas.setWidth(window.innerWidth - sidebarWidth);
@@ -63,7 +63,14 @@ export function createCropBox(canvas) {
     });
 }
 
-export function performCrop(canvas, cropBox, dispatch) {
+export function performCrop(
+    canvas,
+    cropBox,
+    dispatch,
+    setImageBase64,
+    disableCropping,
+    resetRotation
+) {
     const image = canvas.getObjects('image')[0];
     if (!image || !cropBox) return;
 
@@ -111,3 +118,46 @@ export function performCrop(canvas, cropBox, dispatch) {
         });
     };
 }
+
+export function addWatermarkToImage(canvas, watermarkText) {
+    if (!canvas || !watermarkText) return;
+
+    // Remove old watermark if it exists
+    const existing = canvas.getObjects('text').find((obj) => obj.id === 'watermark');
+    if (existing) canvas.remove(existing);
+
+    const image = canvas.getObjects('image')[0];
+    if (!image) return;
+
+    const imageWidth = image.width * image.scaleX;
+    const imageHeight = image.height * image.scaleY;
+
+    const imageLeft = image.left - imageWidth / 2;
+    const imageTop = image.top - imageHeight / 2;
+
+    const text = new fabric.Text(watermarkText, {
+        left: imageLeft + imageWidth - 10,
+        top: imageTop + imageHeight - 30,
+        fontSize: 24,
+        fill: 'rgba(255,255,255,0.6)',
+        selectable: false,
+        id: 'watermark',
+        originX: 'right',
+        originY: 'bottom',
+    });
+
+    canvas.add(text);
+    canvas.renderAll();
+}
+
+// export function applyBlackAndWhite(canvas) {
+//     if (!canvas) return;
+
+//     const image = canvas.getObjects('image')[0];
+//     if (!image) return;
+
+//     // Apply grayscale filter
+//     image.filters = [new fabric.Image.filters.Grayscale()];
+//     image.applyFilters();
+//     canvas.renderAll();
+// }
