@@ -150,14 +150,14 @@ export function addWatermarkToImage(canvas, watermarkText) {
     canvas.renderAll();
 }
 
-// export function applyBlackAndWhite(canvas) {
-//     if (!canvas) return;
+export function applyBlackAndWhite(canvas) {
+    if (!canvas) return;
 
-//     const image = canvas.getObjects('image')[0];
-//     if (!image) return;
+    const image = canvas.getObjects('image')[0];
+    if (!image) return;
 
-//     // Apply grayscale filter
-//     image.filters = [new fabric.Image.filters.Grayscale()];
-//     image.applyFilters();
-//     canvas.renderAll();
-// }
+    // Apply grayscale filter
+    image.filters = [new fabric.Image.filters.Grayscale()];
+    image.applyFilters();
+    canvas.renderAll();
+}
