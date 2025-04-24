@@ -6,7 +6,7 @@ import {
     RotateCcw,
     Stamp,
     Contrast,
-    Trash,
+    ArrowLeft,
     LogOut,
     ArrowDownToLine,
 } from 'lucide-react';
@@ -18,10 +18,11 @@ import {
     clearImage,
     enableCropping,
     saveImage,
+    setWatermark,
 } from '../../redux/slices/imageSlice';
 import { useNavigate } from 'react-router-dom';
 import useToast from '../../hooks/useToast';
-import Toast from '../others/Toast';
+import Toast from '../common/Toast';
 import '../../App.css';
 
 const Sidebar = () => {
@@ -30,7 +31,7 @@ const Sidebar = () => {
     const imagePath = useSelector((state) => state.image.filePath);
     const [toast, setToast] = useToast();
 
-    const handleDelete = async () => {
+    const selectAnotherImage = async () => {
         try {
             // await window.electronAPI.deleteImage(imagePath);
             // dispatch(clearImage());
@@ -71,32 +72,40 @@ const Sidebar = () => {
     return (
         <>
             <div className="sidebar">
-                <button onClick={() => dispatch(enableCropping())}>
-                    <Crop size={20} /> Crop
+                <button className="tooltip" onClick={() => dispatch(enableCropping())}>
+                    <Crop size={30} />
+                    <span className="tooltiptext">Crop</span>
                 </button>
-                <button onClick={() => dispatch(rotateRight())}>
-                    <RotateCw size={20} /> Rotate right
+                <button className="tooltip" onClick={() => dispatch(rotateRight())}>
+                    <RotateCw size={30} />
+                    <span className="tooltiptext">Rotate right</span>
                 </button>
-                <button onClick={() => dispatch(rotateLeft())}>
-                    <RotateCcw size={20} /> Rotate left
+                <button className="tooltip" onClick={() => dispatch(rotateLeft())}>
+                    <RotateCcw size={30} />
+                    <span className="tooltiptext">Rotate left</span>
                 </button>
-                <button>
-                    <Stamp size={20} /> Add watermark
+                <button className="tooltip" onClick={() => dispatch(setWatermark('PicFixer'))}>
+                    <Stamp size={30} />
+                    <span className="tooltiptext">Add watermark</span>
                 </button>
-                <button onClick={() => dispatch(toggleBW())}>
-                    <Contrast size={20} /> Convert to black and white
+                <button className="tooltip" onClick={() => dispatch(toggleBW())}>
+                    <Contrast size={30} />
+                    <span className="tooltiptext">Convert to black and white</span>
                 </button>
-                <button onClick={handleDelete}>
-                    <Trash size={20} /> Delete image
+                <button className="tooltip" onClick={selectAnotherImage}>
+                    <ArrowLeft size={30} />
+                    <span className="tooltiptext">Select Another Image</span>
                 </button>
 
-                <button onClick={handleSave}>
-                    <ArrowDownToLine /> Save Image
+                <button className="tooltip" onClick={handleSave}>
+                    <ArrowDownToLine size={30} />
+                    <span className="tooltiptext">Save Image</span>
                 </button>
 
-                <div className="logout">
+                <div className="logout tooltip">
                     <button onClick={() => handleLogout()}>
-                        <LogOut size={20} /> Logout
+                        <LogOut size={30} />
+                        <span className="tooltiptext">Logout</span>
                     </button>
                 </div>
             </div>
