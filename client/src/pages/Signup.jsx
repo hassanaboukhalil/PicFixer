@@ -1,3 +1,4 @@
+import React from 'react';
 import '../App.css';
 import { useState } from 'react';
 import Input from '../components/common/Input';
@@ -8,6 +9,7 @@ import useToast from '../hooks/useToast';
 import Toast from '../components/common/Toast';
 import { Link } from 'react-router-dom';
 import '../styles/pages/login-signup.css';
+import { getLocationInfo } from '../utils/location';
 
 const Signup = () => {
     const [fullName, setfullName] = useState('');
@@ -20,25 +22,25 @@ const Signup = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        // if (!validate_password(password)) {
-        //   alert(
-        //     "Your Password should contain letters, numbers and should contain more than 7 characters"
-        //   );
-        //   return;
-        // }
 
         try {
+            const locationInfo = await getLocationInfo();
+            if (!locationInfo) {
+                throw new Error('Could not fetch location information');
+            }
             const response = await axiosBaseUrl.post('/signup', {
-                full_name: fullName,
+                name: fullName,
                 email: email,
                 password: password,
+                ip: locationInfo.ip,
+                latitude: locationInfo.latitude,
+                longitude: locationInfo.longitude,
             });
 
             if (response.data.success) {
-                localStorage.setItem('id', response.data.user.id);
-                localStorage.setItem('full_name', response.data.user.full_name);
-                localStorage.setItem('token', response.data.user.token);
-                navigate('/dashboard');
+                localStorage.setItem('id', response.data.data.user.id);
+                localStorage.setItem('name', response.data.data.user.name);
+                navigate('/select-source');
             } else {
                 setToast({
                     message: 'Signup failed',
@@ -57,25 +59,6 @@ const Signup = () => {
         }
     };
 
-    //   function validate_password(pass) {
-    //     let contains_nb = false;
-    //     let contains_letter = false;
-    //     if (pass.length < 8) {
-    //       return false;
-    //     }
-
-    //     for (let i = 0; i < pass.length; i++) {
-    //       if ("1234567890".includes(pass[i])) {
-    //         contains_nb = true;
-    //       } else if (
-    //         "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm".includes(pass[i])
-    //       ) {
-    //         contains_letter = true;
-    //       }
-    //     }
-
-    //     return contains_nb && contains_letter;
-    //   }
     return (
         <>
             <section className="container login_signup_section">
