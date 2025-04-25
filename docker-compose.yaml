@@ -3,19 +3,14 @@ version: "3.8"
 services:
   server:
     image: hsn129/picfixer_image:latest
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
     container_name: picfixer-app
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - 8000:80
     env_file:
       - ./server/.env
     depends_on:
       - database
-    # volumes:
-    #   - .:/app
 
   database:
     image: mysql:8.0
