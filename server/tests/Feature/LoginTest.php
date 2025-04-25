@@ -33,10 +33,12 @@ class LoginTest extends TestCase
             ->assertJson([
                 "success" => true,
                 "message" => "User logged in successfully",
-                "user" => [
-                    "id" => $user->id,
-                    "name" => $user->name,
-                    "email" => $email,
+                "data" => [
+                    "user" => [
+                        "id" => $user->id,
+                        "email" => $email,
+                        "name" => $user->name,
+                    ]
                 ]
             ]);
     }
