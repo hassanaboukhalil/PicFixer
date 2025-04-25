@@ -38,11 +38,10 @@ const Login = () => {
 
             console.log(response);
 
-            if (response.data.success == true) {
-                localStorage.setItem('id', response.data.user.id);
-                localStorage.setItem('name', response.data.user.name);
+            if (response.data.success) {
+                localStorage.setItem('id', response.data.data.user.id);
+                localStorage.setItem('name', response.data.data.user.name);
                 // localStorage.setItem('token', response.data.data.token);
-
                 navigate('/select-source');
             } else {
                 setToast({
@@ -59,7 +58,6 @@ const Login = () => {
                 visible: true,
             });
             console.error('Error during login:', error);
-            console.log;
         }
     };
 
