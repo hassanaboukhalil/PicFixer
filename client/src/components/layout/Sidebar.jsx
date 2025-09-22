@@ -87,10 +87,6 @@ const Sidebar = () => {
                     <span className="tooltiptext">Rotate left</span>
                 </button>
 
-                {/* <button className="tooltip" onClick={() => dispatch(setWatermark('PicFixer'))}>
-                    <Stamp size={30} />
-                    <span className="tooltiptext">Add watermark</span>
-                </button> */}
                 <button
                     className="tooltip"
                     onClick={() => setIsWatermarkDialogOpen(!isWatermarkDialogOpen)}
