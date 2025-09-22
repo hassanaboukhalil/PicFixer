@@ -38,12 +38,11 @@ const ImageEditor = () => {
                         value={watermarkText}
                         onChange={(e) => setWatermarkText(e.target.value)}
                         placeholder={'PicFixer'}
-                        className={'body2'}
+                        className={'body2 mt-8'}
                     />
                     <Button
                         text={'Submit'}
                         onClick={addWatermark()}
-                        // className={'w-full'}
                         bgColor="bg-secondary"
                         textColor="text-black"
                     />
