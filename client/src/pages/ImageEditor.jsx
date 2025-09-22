@@ -21,6 +21,7 @@ const ImageEditor = () => {
 
     const addWatermark = () => {
         dispatch(setWatermark(watermarkText));
+        setIsWatermarkDialogOpen(false);
     };
 
     return (
@@ -42,7 +43,7 @@ const ImageEditor = () => {
                     />
                     <Button
                         text={'Submit'}
-                        onClick={addWatermark()}
+                        onClick={() => addWatermark()}
                         bgColor="bg-secondary"
                         textColor="text-black"
                     />
