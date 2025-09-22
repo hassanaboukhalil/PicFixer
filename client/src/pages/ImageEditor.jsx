@@ -14,7 +14,7 @@ import Button from '../components/common/Button';
 const ImageEditor = () => {
     const imageBase64 = useSelector((state) => state.image.base64);
     const { isWatermarkDialogOpen, setIsWatermarkDialogOpen } = useWatermarkDialogState();
-    const [watermarkText, setWatermarkText] = useState('PicFixer');
+    const [watermarkText, setWatermarkText] = useState('');
     const dispatch = useDispatch();
 
     if (!imageBase64) return <h2 className="no-image">No image selected</h2>;
