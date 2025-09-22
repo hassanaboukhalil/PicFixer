@@ -1,5 +1,5 @@
 // components/Sidebar.jsx
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Crop,
     RotateCw,
@@ -24,12 +24,14 @@ import { useNavigate } from 'react-router-dom';
 import useToast from '../../hooks/useToast';
 import Toast from '../common/Toast';
 import '../../App.css';
+import { useWatermarkDialogState } from '../../state/context/DialogWatermarkContext';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const imagePath = useSelector((state) => state.image.filePath);
     const [toast, setToast] = useToast();
+    const { isWatermarkDialogOpen, setIsWatermarkDialogOpen } = useWatermarkDialogState();
 
     const selectAnotherImage = async () => {
         try {
@@ -84,10 +86,19 @@ const Sidebar = () => {
                     <RotateCcw size={30} />
                     <span className="tooltiptext">Rotate left</span>
                 </button>
-                <button className="tooltip" onClick={() => dispatch(setWatermark('PicFixer'))}>
+
+                {/* <button className="tooltip" onClick={() => dispatch(setWatermark('PicFixer'))}>
+                    <Stamp size={30} />
+                    <span className="tooltiptext">Add watermark</span>
+                </button> */}
+                <button
+                    className="tooltip"
+                    onClick={() => setIsWatermarkDialogOpen(!isWatermarkDialogOpen)}
+                >
                     <Stamp size={30} />
                     <span className="tooltiptext">Add watermark</span>
                 </button>
+
                 <button className="tooltip" onClick={() => dispatch(toggleBW())}>
                     <Contrast size={30} />
                     <span className="tooltiptext">Convert to black and white</span>
