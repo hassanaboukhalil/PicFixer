@@ -1,14 +1,21 @@
-version: "3.8"
-
 services:
   server:
-    image: hsn129/picfixer_image:latest
+    # image: hsn129/picfixer_image:latest
+    build: .
     container_name: picfixer-app
     restart: unless-stopped
     ports:
-      - 8000:80
-    env_file:
-      - ./server/.env
+      - 8000:8000
+    # env_file:
+    #   - ./server/.env
+    environment:
+      - LARAVEL_PROJECT_NAME=picfixer
+      - LARAVEL_DATABASE_HOST=database
+      - LARAVEL_DATABASE_PORT_NUMBER=3306
+      - LARAVEL_DATABASE_NAME=picfixer
+      - LARAVEL_DATABASE_USER=root
+      - LARAVEL_DATABASE_PASSWORD=12345678
+      - ALLOW_EMPTY_PASSWORD=no
     depends_on:
       - database
 
