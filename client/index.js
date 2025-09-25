@@ -10,6 +10,7 @@ function createWindow() {
         width, // full screen width
         height, // full screen height
         title: 'PicFixer',
+        icon: path.join(__dirname, 'public/favicon.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'), // preload script
             contextIsolation: true,
