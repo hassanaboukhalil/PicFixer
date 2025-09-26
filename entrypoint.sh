@@ -25,7 +25,7 @@ php artisan route:cache
 # Run any new migrations (use --force to avoid prompt)
 php artisan migrate --force
 
-echo "✅ Laravel setup complete. Starting Apache..."
+echo "✅ Laravel setup complete. Starting server..."
 
 # Start Laravel server
 php artisan serve --host=0.0.0.0 --port=8000
