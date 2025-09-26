@@ -27,5 +27,5 @@ php artisan migrate --force
 
 echo "✅ Laravel setup complete. Starting Apache..."
 
-# Start Apache in the foreground
-exec apache2-foreground
+# Start Laravel server
+php artisan serve --host=0.0.0.0 --port=8000
