@@ -1,16 +1,9 @@
 #!/bin/bash
 set -e
 
-# Set environment variables based on docker-compose configuration
-export DB_HOST=database
-export DB_PORT=3306
-export DB_DATABASE=picfixer
-export DB_USERNAME=root
-export DB_PASSWORD=12345678
-
 # Wait until MySQL is ready
-until mysqladmin ping -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" -p"$DB_PASSWORD" --silent; do
-  echo "Waiting for MySQL at $DB_HOST:$DB_PORT..."
+until mysqladmin ping -h"$LARAVEL_DATABASE_HOST" -P"$LARAVEL_DATABASE_PORT_NUMBER" -u"$LARAVEL_DATABASE_USER" -p"$LARAVEL_DATABASE_PASSWORD" --silent; do
+  echo "Waiting for MySQL at $LARAVEL_DATABASE_HOST:$LARAVEL_DATABASE_PORT_NUMBER..."
   sleep 3
 done
 
