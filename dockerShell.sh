@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait until MySQL is ready
-until mysqladmin ping -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" -p"$DB_PASSWORD" --silent; do
+until mysqladmin ping -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" --silent; do
   echo "Waiting for MySQL at $DB_HOST:$DB_PORT..."
   sleep 3
 done
