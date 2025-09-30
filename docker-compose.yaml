@@ -5,17 +5,9 @@ services:
     container_name: picfixer-app
     restart: unless-stopped
     ports:
-      - 8000:8000
-    # env_file:
-    #   - ./server/.env
-    environment:
-      - LARAVEL_PROJECT_NAME=picfixer
-      - LARAVEL_DATABASE_HOST=database
-      - LARAVEL_DATABASE_PORT_NUMBER=3306
-      - LARAVEL_DATABASE_NAME=picfixer_electronjs_db
-      - LARAVEL_DATABASE_USER=root
-      - LARAVEL_DATABASE_PASSWORD=hagfwt892w3tgrf2
-      - ALLOW_EMPTY_PASSWORD=no
+      - 8000:80
+    env_file:
+      - ./server/.env
     depends_on:
       - database
 
