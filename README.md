@@ -1,5 +1,7 @@
 # PicFixer
 
+![PicFixer Main Interface](readme-images/picfixer_image.png)
+
 A powerful desktop image editing application built with React, Electron, and Laravel.
 
 ## Project Overview
@@ -108,16 +110,10 @@ PicFixer is a cross-platform desktop application designed for efficient image ed
 1. **Build and start containers**
 
    ```bash
-   docker-compose up -d
+   docker-compose up -d --build
    ```
 
-2. **Run migrations**
-
-   ```bash
-   docker-compose exec app php artisan migrate
-   ```
-
-3. **Access the application**
+2. **Access the application**
    - The API will be available at `http://localhost:8000`
    - The frontend will be available at `http://localhost:3000`
 
