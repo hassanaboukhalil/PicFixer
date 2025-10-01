@@ -4,6 +4,23 @@
 
 A powerful desktop image editing application built with React, Electron, and Laravel.
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+  - [User Authentication](#user-authentication)
+  - [Image Management](#image-management)
+  - [Image Editing Capabilities](#image-editing-capabilities)
+- [Tech Stack](#tech-stack)
+- [Installation and Setup](#installation-and-setup)
+  - [Local Development Setup](#local-development-setup)
+  - [Docker Deployment](#docker-deployment)
+- [Usage Instructions](#usage-instructions)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+- [Contributing Guidelines](#contributing-guidelines)
+- [License](#license)
+
 ## Project Overview
 
 PicFixer is a cross-platform desktop application designed for efficient image editing. It provides users with a suite of essential image manipulation tools in an intuitive interface. The application combines the power of React for the frontend, Laravel for the backend API, and Electron to deliver a seamless desktop experience.
