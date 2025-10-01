@@ -124,13 +124,29 @@ PicFixer is a cross-platform desktop application designed for efficient image ed
 
 ### Docker Deployment
 
-1. **Build and start containers**
+1. **Configure environment variables**
+
+   Create or update your `.env` file with the following database variables:
+
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=database
+   DB_PORT=3306
+   DB_DATABASE=picfixer
+   DB_USERNAME=picfixer_user
+   DB_PASSWORD=your_secure_password
+
+   MYSQL_ROOT_PASSWORD=your_root_password
+   MYSQL_DATABASE=picfixer
+   ```
+
+2. **Build and start containers**
 
    ```bash
    docker-compose up -d --build
    ```
 
-2. **Access the application**
+3. **Access the application**
    - The API will be available at `http://localhost:8000`
    - The frontend will be available at `http://localhost:3000`
 
