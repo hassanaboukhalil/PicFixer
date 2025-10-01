@@ -1,8 +1,7 @@
-version: "3.8"
-
 services:
   server:
-    image: hsn129/picfixer_image:latest
+    # image: hsn129/picfixer_image:latest
+    build: .
     container_name: picfixer-app
     restart: unless-stopped
     ports:
@@ -18,8 +17,10 @@ services:
     restart: unless-stopped
     ports:
       - "3306:3306"
-    env_file:
-      - ./server/.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=picfixer_electronjs_db
+      - MYSQL_ROOT_HOST=% # This allows connections from any host
     volumes:
       - db-data:/var/lib/mysql
 
