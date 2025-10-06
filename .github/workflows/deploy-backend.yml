@@ -1,7 +1,10 @@
-name: Deploy Laravel Backend to EC2
+name: Deploy Laravel Backend to Render
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
