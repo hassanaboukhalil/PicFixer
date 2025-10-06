@@ -61,7 +61,7 @@ jobs:
 
   deploy-to-Render:
     name: deploy to Render
-    needs: [build-and-run-tests, build-and-push-docker-image]
+    needs: [build-and-push-image]
     runs-on: ubuntu-latest
 
     environment:
