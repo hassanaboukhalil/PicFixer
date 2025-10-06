@@ -20,7 +20,13 @@ function createWindow() {
 
     // Load Vite dev server or built app
     // window.loadFile(path.join(__dirname, 'dist/index.html')); // Uncomment for production build
-    window.loadURL('http://localhost:5173/');
+    // window.loadURL('http://localhost:5173/');
+    const isDev = process.env.NODE_ENV === 'development';
+    if (isDev) {
+        window.loadURL('http://localhost:5173/');
+    } else {
+        window.loadFile(path.join(__dirname, 'dist/index.html'));
+    }
 }
 
 // App lifecycle
