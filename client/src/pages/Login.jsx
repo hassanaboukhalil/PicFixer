@@ -90,7 +90,7 @@ const Login = () => {
                         textColor="text-black"
                     />
                     <p className="body2 text-white">
-                        Have an account ?{' '}
+                        Have an account?{' '}
                         <span className="text-secondary">
                             <Link to={'/signup'} className="underline">
                                 Sign Up
