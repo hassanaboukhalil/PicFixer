@@ -39,9 +39,9 @@ jobs:
         working-directory: ./server
         run: php artisan key:generate
 
-      - name: Migrate test database
-        working-directory: ./server
-        run: php artisan migrate
+      # - name: Migrate test database
+      #   working-directory: ./server
+      #   run: php artisan migrate
 
       # - name: Run Laravel Tests
       #   working-directory: ./server
