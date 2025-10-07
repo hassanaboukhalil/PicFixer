@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: server
+    env: docker
+    # repo: https://github.com/hassanaboukhalil/PicFixer
+    region: oregon
+    # plan: starter
+    dockerfilePath: ./Dockerfile
+    # dockerCommand: php artisan serve --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 8000
+    envFile: ./server/.env
+
+  - type: pserv
+    name: database
+    env: docker
+    # repo: https://github.com/hassanaboukhalil/PicFixer
+    region: oregon
+    # plan: starter
+    image: mysql:8.0
+    envFile: ./server/.env
+    disk:
+      name: data
+      mountPath: /var/lib/mysql
+      sizeGB: 10
