@@ -10,7 +10,13 @@ services:
     envVars:
       - key: PORT
         value: 8000
+      - key: DB_HOST
+        value: database
+      - key: DB_PORT
+        value: 3306
     envFile: ./server/.env
+    dependsOn:
+      - database
 
   - type: pserv
     name: database
