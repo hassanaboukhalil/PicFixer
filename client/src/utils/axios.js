@@ -10,10 +10,10 @@ const axiosBaseUrl = axios.create({
     baseURL: 'http://localhost:8000/api',
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'X-Requested-With': 'XMLHttpRequest',
+        // 'Access-Control-Allow-Origin': '*',
+        // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        // 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        // 'X-Requested-With': 'XMLHttpRequest',
         // ...(token && { 'Authorization': `Bearer ${token}` })
         // Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzQzMDM2MDUyLCJleHAiOjE3NDMwMzk2NTIsIm5iZiI6MTc0MzAzNjA1MiwianRpIjoicnZ1WElRYkRBeTNhb2Y0aiIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.aRrwVKvoYYzyGnkJLs09FNOq2qhl568WADPpyL9sg6I`,
     },
