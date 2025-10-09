@@ -7,17 +7,6 @@ services:
     # plan: starter
     dockerfilePath: ./Dockerfile
     # dockerCommand: php artisan serve --host 0.0.0.0 --port $PORT
-    envVars:
-      - key: DB_HOST
-        value: database
-      - key: DB_PORT
-        value: 3306
-      - key: DB_USERNAME
-        value: root
-      - key: MYSQL_ROOT_PASSWORD
-        generateValue: true
-      - key: DB_PASSWORD
-        sync: MYSQL_ROOT_PASSWOR
     envFile: ./server/.env
     dependsOn:
       - database
@@ -30,11 +19,6 @@ services:
     # plan: starter
     image: mysql:8.0
     envFile: ./server/.env
-    envVars:
-      - key: MYSQL_ROOT_PASSWORD
-        generateValue: true
-      - key: MYSQL_DATABASE
-        value: picfixer
     disk:
       name: data
       mountPath: /var/lib/mysql
